@@ -12,6 +12,7 @@ app.post('/ads/get', function (req, res) {
 
 app.use(express.static('view'));
 
-app.listen(process.env.port || 5000, function () {
+const port = process.env.PORT || 5000;
+app.listen(port, function () {
     console.log('app running');
 });
