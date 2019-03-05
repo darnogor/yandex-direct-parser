@@ -1,17 +1,17 @@
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
 
 
 app.get('/', function (req, res) {
-    res.render('index.html');
+    res.sendFile(__dirname + '/view/index.html');
 });
 
+app.post('/ads/get', function (req, res) {
+    let words = req.params.query;
+});
 
-var port = process.env.port || 8080;
+app.use(express.static('view'));
 
-app.use(express.static(__dirname));
-app.use(express.static(__dirname + 'view'));
-
-app.listen(port, function () {
+app.listen(process.env.port || 5000, function () {
     console.log('app running');
 });
