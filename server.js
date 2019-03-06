@@ -1,19 +1,17 @@
-let express = require('express');
+const express = require('express');
+const path    = require('path');
+const port    = process.env.PORT || 5000;
+
 let app = express();
+app.use(express.static(path.join(__dirname, 'view')));
+app.set('views', path.join(__dirname, 'view'));
 
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/view/index.html');
+app.get('/', (req, res) => {
+    res.sendFile('index.html');
 });
 
-// app.post('/ads/get', function (req, res) {
-//     let words = req.params.query;
-// });
-
-app.use(express.static(__dirname));
-app.use(express.static(__dirname + 'view'));
-
-const port = process.env.port || 5000;
-app.listen(port, function () {
-    console.log('app running');
+app.post('/ads/get', (req, res) => {
+    let words = req.params.query;
 });
+
+app.listen(port, () => {console.log(`app running on ${port}`);});
