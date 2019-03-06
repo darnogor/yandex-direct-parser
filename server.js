@@ -10,6 +10,7 @@ app.get('/', function (req, res) {
 //     let words = req.params.query;
 // });
 
+app.use(express.static(__dirname));
 app.use(express.static(__dirname + 'view'));
 
 const port = process.env.port || 5000;
