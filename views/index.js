@@ -36,7 +36,7 @@ searchForm.submit((event) => {
         loadingView.setLoading(true);
         $.ajax({
             type: 'POST',
-            url: '/ads/get',
+            url: '/api/ads/get',
             contentType: 'application/json',
             data: JSON.stringify({query: text}),
             success: (data) => {
